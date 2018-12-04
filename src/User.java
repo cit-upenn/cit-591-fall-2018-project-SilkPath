@@ -11,12 +11,6 @@ public class User {
 		this.username = username;
 		this.password = password;
 		PrintWriter writer;
-		try {
-			writer = new PrintWriter(username + ".txt");
-			writer.close();
-		} catch (FileNotFoundException e) { //Need to check permission?
-			e.printStackTrace();
-		}
 		diaries = new ArrayList<>();
 	}
 
