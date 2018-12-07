@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class User {
@@ -10,7 +8,6 @@ public class User {
 	User(String username, String password){
 		this.username = username;
 		this.password = password;
-		PrintWriter writer;
 		diaries = new ArrayList<>();
 	}
 

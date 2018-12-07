@@ -1,10 +1,10 @@
-import java.io.BufferedWriter;
+import java.awt.Image;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 public class SilkPath {
 	
@@ -44,14 +44,23 @@ public class SilkPath {
 		diaries = currentUser.getDiaries();
 		System.out.println("Log in successfully...redirecting to your diaries!");
 		//scan.close();
+		/**
 		for (int  i =0 ;i<diaries.size();i++) {
-			System.out.println("diary" + i + ": " + diaries.get(i).getNotes());
+			System.out.println("diary" + i + ": " + diaries.get(i).getMatch().getName());
+			System.out.println("diary" + i + ": " + diaries.get(i).getMatch().getAge());
 		}
 		System.out.println();
+		*/
 		
 		//Create a new diary
 		System.out.println("Enter match name: ");
-		String matchName = scan.nextLine();
+		//LUCY: Need to create a place for them to select a picture and we grab the file path
+		String picPath = "pic.jpg";
+		Image picture = ImageIO.read(new File(picPath)); //LUCY: This is used for display image (path to image file locally)
+		
+		//LUCY: Need to change this to the selected match from the dropdown
+		//If the match does not exist, send them to Match's constructor after asking them for info (see below hardcoded code)	
+		Match match = new Match("Placeholder", 25, "Grad student", picPath); 
 		System.out.println("Enter date: ");
 		String date = scan.nextLine();
 		System.out.println("Enter address: ");
@@ -59,12 +68,13 @@ public class SilkPath {
 		System.out.println("Enter notes: ");
 		String notes = scan.nextLine();		
 		//scan.close();
-		Diary d = new Diary(matchName, date, address, notes);		
+		Diary d = new Diary(match, date, address, notes);		
 		WriteDiaryToFile.writeDiary(currentUser, d);
 		diaries.add(d);
 		if (d!=null)
 		System.out.println("Diary created successfully!");
 		else System.out.println("Diary could not be created.");
+		//LUCY: make sure to close scan if you used it
 		
 		//Delete a diary
 		System.out.println("Enter 'remove' to remove this added diary");

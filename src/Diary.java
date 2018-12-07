@@ -1,24 +1,22 @@
-import java.util.Date;
-
 public class Diary {
-	private String matchName;
+	public Match getMatch() {
+		return match;
+	}
+
+	public void setMatch(Match match) {
+		this.match = match;
+	}
+
+	private Match match;
 	private String date;
 	private String address;
 	private String notes;
 	
-	Diary(String matchName, String date, String address, String notes){
-		this.matchName = matchName;
+	Diary(Match match, String date, String address, String notes){
+		this.match = match;
 		this.date = date;
 		this.address = address;
 		this.notes = notes;
-	}
-
-	public String getMatchName() {
-		return matchName;
-	}
-
-	public void setMatchName(String matchName) {
-		this.matchName = matchName;
 	}
 
 	public String getDate() {

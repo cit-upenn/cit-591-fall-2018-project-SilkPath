@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class FindDiaries {
@@ -13,17 +12,18 @@ public class FindDiaries {
 		try {
 			scan = new Scanner(f);
 			String s = scan.nextLine();
-			System.out.println("The first line: " + s);
 			s = scan.nextLine();
-			System.out.println("The second line: " + s);
-			String[] match;
 			while (scan.hasNextLine()) {
 				String[] parsed = scan.nextLine().split("===");
 				String matchName = parsed[0];
-				String date = parsed[1];
-				String address = parsed[2];
-				String notes = parsed[3];
-				Diary d = new Diary(matchName, date, address, notes);
+				int matchAge = Integer.parseInt(parsed[1]);
+				String matchBlurb = parsed[2];
+				String matchPic = parsed[3];
+				String date = parsed[4];
+				String address = parsed[5];
+				String notes = parsed[6];
+				Match m = new Match (matchName, matchAge, matchBlurb, matchPic);
+				Diary d = new Diary(m, date, address, notes);
 				diaries.add(d);
 			}
 			scan.close();

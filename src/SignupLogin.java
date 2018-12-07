@@ -1,17 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class SignupLogin {
-
-	private String username;
-	private String pwd;
 	
-	
-	public static User Login (String username, String pwd) {
+	public static User Login (String username, String pwd) {		
 		User currentUser = null;
 		boolean closed = false;
 		String fileName = username + ".txt";

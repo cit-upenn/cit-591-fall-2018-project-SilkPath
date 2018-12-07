@@ -10,7 +10,7 @@ public class WriteDiaryToFile {
 			FileWriter fw = new FileWriter(fileName, true);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
-		    out.println(d.getMatchName() + "===" + d.getDate() + "===" + d.getAddress() +"===" + d.getNotes());
+		    out.println(d.getMatch().getName() + "===" + d.getMatch().getAge() + "===" + d.getMatch().getBlurb() + "===" + d.getMatch().getPic() + "===" + d.getDate() + "===" + d.getAddress() +"===" + d.getNotes());
 			out.close();	
 			return d;					
 		} catch (IOException e) {
