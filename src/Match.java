@@ -45,4 +45,14 @@ public class Match {
 		this.pic = pic;
 	}
 	
+	@Override
+	public boolean equals(Object object) {
+		Match match = (Match) object;
+		if (match == null) return false;
+		if (name.equals(match.getName()) && age == match.getAge() 
+				&& blurb.equals(match.getBlurb()) && pic.equals(match.getPic()))
+				return true;
+				
+		else return false;
+	}
 }

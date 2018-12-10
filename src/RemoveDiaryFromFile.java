@@ -10,6 +10,7 @@ public class RemoveDiaryFromFile {
 	public static void removeDiary(File f, Diary d) {
 	File inputFile = f;
 	File tempFile = new File("myTempFile.txt");
+	if (d == null) System.out.println("Diary does not exist.");
 
 	BufferedReader reader;
 	try {
@@ -28,6 +29,7 @@ public class RemoveDiaryFromFile {
 		writer.close(); 
 		reader.close(); 
 		boolean successful = tempFile.renameTo(inputFile);
+		tempFile.delete();//LUCY: NOT SURE IF THIS IS THE LINE MISSING
 		if (successful) System.out.println("Diary removed successfully!");
 		else {
 			System.out.println("Error removing diary. Please try again.");

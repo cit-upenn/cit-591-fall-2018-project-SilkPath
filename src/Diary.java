@@ -43,4 +43,13 @@ public class Diary {
 		this.notes = notes;
 	}
 	
+	public boolean equals(Object o) {
+		if (o==null) return false;
+		Diary d = (Diary) o;
+		
+		if (address.equals(d.getAddress()) && date.equals(d.getDate()) && match.equals(d.getMatch()) && notes.equals(d.getNotes())) {
+			return true;
+		}
+		else return false;
+	}
 }
