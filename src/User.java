@@ -8,6 +8,7 @@ public class User {
 	private String username;
 	private String password;
 	private ArrayList<Diary> diaries;
+	private ArrayList<Match> matches;
 	
 	/**
 	 * Constructor
@@ -18,6 +19,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		diaries = new ArrayList<>();
+		matches = new ArrayList<>();
 	}
 
 	/**
@@ -80,6 +82,22 @@ public class User {
 			return true;
 		}
 		else return false;
+	}
+	
+	/**
+	 * Get matches
+	 * @return matches
+	 */
+	public ArrayList<Match> getMatches() {
+		return matches;
+	}
+
+	/**
+	 * Set matches
+	 * @param matches
+	 */
+	public void setMatches(ArrayList<Match> matches) {
+		this.matches = matches;
 	}
 		
 }

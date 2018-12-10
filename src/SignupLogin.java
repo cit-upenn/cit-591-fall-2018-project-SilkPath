@@ -53,9 +53,11 @@ public class SignupLogin {
 						}
 					else {
 						System.out.println("Password incorrect. Please enter again.");
+						scan.close();
 						return null;
 					}
 				}
+				scan.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("We did not find a user with that username, please try again");
 				return null;

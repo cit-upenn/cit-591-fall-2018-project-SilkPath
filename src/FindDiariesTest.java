@@ -53,6 +53,5 @@ class FindDiariesTest {
 		
 		//Test case 5: Nini
 		assertNull(FindDiaries.find(nini));
-
 	}
 }

@@ -47,12 +47,38 @@ public class FindDiaries {
 				String address = parsed[5];
 				String notes = parsed[6];
 				Match m = new Match (matchName, matchAge, matchBlurb, matchPic);
-				Diary d = new Diary(m, date, address, notes);
+				Diary d;
+					
+				if (user.getMatches().size() == 0) {
+					user.getMatches().add(m);
+					d = new Diary(m, date, address, notes);
+				}
+				else {
+					//Check if this match already exists
+					int i = 0;
+					while (!user.getMatches().get(i).equals(m) && i < user.getMatches().size()) {
+						i++;
+					}
+					
+					//1) Found the index
+					if (user.getMatches().get(i).equals(m)) {
+						//Add this match to diary then go back to while loop to check the next line
+						d = new Diary(user.getMatches().get(i), date, address, notes);
+					}
+					
+					//2) While loop stopped because didn't find it
+					else {
+						user.getMatches().add(m);
+						d = new Diary(m, date, address, notes);
+					}
+				}
 				diaries = new ArrayList<>();
-				diaries.add(d);
-			}
-			scan.close();
-			return diaries;		
+				diaries.add(d);	
+						
+			}	
+		scan.close();
+		return diaries;	
+	
 		} catch (FileNotFoundException e) {
 			System.out.println("Did not find user in our system.");
 			return null;

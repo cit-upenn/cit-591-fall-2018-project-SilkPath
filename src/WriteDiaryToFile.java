@@ -41,6 +41,7 @@ public class WriteDiaryToFile {
 				scan.close();
 				return null;
 			}
+			scan.close();
 			
 		} catch (FileNotFoundException e1) {
 			return null;
