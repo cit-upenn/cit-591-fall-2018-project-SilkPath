@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Main method: silk path
+ * @author silkpath
+ *
+ */
 public class SilkPath {
 	
 	public static void main(String[] args) throws IOException {
@@ -52,10 +57,12 @@ public class SilkPath {
 		System.out.println();
 		*/
 		
+		
 		//Create a new diary
 		System.out.println("Enter match name: ");
 		//LUCY: Need to create a place for them to select a picture and we grab the file path
 		String picPath = "pic.jpg";
+		//LUCY: Need to set up input validation (age cannot be weird symbols etc.)
 		Image picture = ImageIO.read(new File(picPath)); //LUCY: This is used for display image (path to image file locally)
 		
 		//LUCY: Need to change this to the selected match from the dropdown
@@ -75,6 +82,7 @@ public class SilkPath {
 		System.out.println("Diary created successfully!");
 		else System.out.println("Diary could not be created.");
 		//LUCY: make sure to close scan if you used it
+		
 		
 		//Delete a diary
 		System.out.println("Enter 'remove' to remove this added diary");

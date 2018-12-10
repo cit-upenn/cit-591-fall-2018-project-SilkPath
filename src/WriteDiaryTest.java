@@ -4,18 +4,19 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+/**
+ * JUnit test class for WriteDiaryToFile class
+ * @author silkpath
+ *
+ */
 class WriteDiaryTest {
-
 	User serena; //User exists and correct pwd
 	User lucy; //User exists but wrong password
 	User sally; //User is null
 	User jen; //User file not found
 	Diary d1; //Diary correct
 	Diary d2; //Diary is null
-	
-	
-	
+		
 	@BeforeEach
 	void setUp() throws Exception {
 		this.serena = new User ("serena", "test123");

@@ -3,23 +3,40 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class has a static method to take in one user and find that user's dating diaries and store on that user
+ * @author silkpath
+ *
+ */
 public class FindDiaries {
 	
+	/**
+	 * Find diaries of passed in user
+	 * @param user
+	 * @return an array list of diaries or null
+	 */
 	public static ArrayList<Diary> find(User user) {
+		//Check if parameter is null
 		if (user == null) {
 			System.out.println("User empty, please try again.");
 			return null;
 		}
+		
+		//If not null
 		ArrayList<Diary> diaries = null;
 		File f = new File (user.getUsername()+ ".txt");
+		
 		try {
 			Scanner scan = new Scanner(f);
 			String s = scan.nextLine();
 			s = scan.nextLine();
+			//Check if password is correct
 			if (!s.equals(user.getPassword())){
 				scan.close();
 				return null;
 			}
+			
+			//If everything is correct, we loop to add each line of dating diary
 			while (scan.hasNextLine()) {
 				String[] parsed = scan.nextLine().split("===");
 				String matchName = parsed[0];

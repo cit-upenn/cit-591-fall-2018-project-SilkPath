@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * JUnit test class for FindDiaries class
+ * @author silkpath
+ *
+ */
 class FindDiariesTest {
 
 	User krystal; //User exists and has diaries
@@ -48,9 +53,6 @@ class FindDiariesTest {
 		
 		//Test case 5: Nini
 		assertNull(FindDiaries.find(nini));
-		
 
 	}
-   	
-
 }

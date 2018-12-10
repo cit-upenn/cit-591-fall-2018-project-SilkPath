@@ -3,11 +3,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * JUnit test class for SignupLogin class
+ * @author silkpath
+ *
+ */
 class SignupLoginTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-
 	}
 
 	@Test
