@@ -1,33 +1,18 @@
 package Gui;
-
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import Code.Diary;
-import Code.SignupLogin;
-import Code.User;
-
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.JPasswordField;
 
 public class LogInGui {
 
+	/**
+	 * Instance Variables
+	 */
 	private JFrame SilkPath;
 	private JTextField tfUsername;
 	private JPasswordField password;
@@ -45,6 +30,7 @@ public class LogInGui {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		SilkPath = new JFrame();
 		SilkPath.setTitle("SilkPath");
 		SilkPath.getContentPane().setBackground(new Color(100, 149, 237));
@@ -74,19 +60,6 @@ public class LogInGui {
 		SilkPath.getContentPane().setLayout(null);
 		
 		btnLogIn = new JButton("Log In");
-//		btnLogIn.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent arg0) {
-//				User currentUser = null;				
-//				if (currentUser == null ) { 
-//					String username = tfUsername.getText();					
-//					String pwd = password.getText();
-//					currentUser = SignupLogin.Login(username, pwd);	
-//					SilkPath.setVisible(false);
-//					MainGui mainGui= new MainGui();				
-//				}
-//			}
-//		});
 		btnLogIn.setForeground(new Color(255, 255, 255));
 		btnLogIn.setFont(new Font("AR JULIAN", Font.PLAIN, 12));
 		btnLogIn.setBackground(new Color(105, 105, 105));
@@ -110,6 +83,9 @@ public class LogInGui {
 		SilkPath.getContentPane().add(password);
 	}
 
+	/**
+	 * Getters and setters
+	 */
 	public JFrame getSilkPath() {
 		return SilkPath;
 	}
@@ -131,22 +107,6 @@ public class LogInGui {
 	}
 }
 		
-//		btnSignUp.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent arg0) {
-//				SilkPath.setVisible(false);
-//				EventQueue.invokeLater(new Runnable() {
-//					public void run() {
-//						try {
-//							SignUpGui window2 = new SignUpGui();
-//							window2.SignUp.setVisible(true);
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				});
-//			}
-//
-//		});
+
 	
 	

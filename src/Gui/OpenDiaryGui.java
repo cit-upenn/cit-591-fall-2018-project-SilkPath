@@ -1,28 +1,21 @@
 package Gui;
 
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
 public class OpenDiaryGui {
 
+	/**
+	 * Instance Variables
+	 */
 	private JFrame frmMyDiary;
 	private JLabel lblWhat_put;
 	private JLabel lblWhere_put;
@@ -30,8 +23,8 @@ public class OpenDiaryGui {
 	private JButton btnWho_put;
 	private JButton btnDelete;
 	private JLabel lblWho;
-	private JLabel lblNewLabel_1;
-	private JPanel panel;
+	private JLabel lblPhoto;
+	private JPanel pnPhoto;
 
 
 	/**
@@ -46,7 +39,7 @@ public class OpenDiaryGui {
 	 */
 	private void initialize() {
 		frmMyDiary = new JFrame();
-		frmMyDiary.getContentPane().setBackground(new Color(102, 205, 170));
+		frmMyDiary.getContentPane().setBackground(new Color(244, 164, 96));
 		frmMyDiary.getContentPane().setForeground(new Color(255, 255, 255));
 		frmMyDiary.setTitle("My Diary");
 		frmMyDiary.setBounds(100, 100, 570, 552);
@@ -82,18 +75,15 @@ public class OpenDiaryGui {
 		btnDelete.setBounds(341, 467, 130, 23);
 		btnDelete.setBackground(new Color(105, 105, 105));
 		btnDelete.setForeground(new Color(255, 240, 245));
+		btnDelete.setFont(new Font("AR JULIAN", Font.PLAIN, 14));
 		
 		
 		btnWho_put = new JButton(" ");
 		btnWho_put.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		btnWho_put.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnWho_put.setBounds(146, 30, 100, 27);
 		btnWho_put.setHorizontalAlignment(SwingConstants.LEFT);
 		btnWho_put.setForeground(new Color(255, 255, 255));
-		btnWho_put.setBackground(new Color(244, 164, 96));
+		btnWho_put.setBackground(new Color(188, 143, 143));
 
 		btnWho_put.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
 		
@@ -125,37 +115,38 @@ public class OpenDiaryGui {
 		frmMyDiary.getContentPane().add(lblWhere);
 		frmMyDiary.getContentPane().add(lblWhen);
 		
-		panel = new JPanel();
-		panel.setBounds(321, 30, 150, 184);
-		frmMyDiary.getContentPane().add(panel);
-		
-		lblNewLabel_1 = new JLabel("   ");
-		panel.add(lblNewLabel_1);
+		pnPhoto = new JPanel();
+		pnPhoto.setBounds(321, 30, 150, 184);
+		frmMyDiary.getContentPane().add(pnPhoto);	
+		pnPhoto.add(lblPhoto);
 		
 		
 		
 	}
 
 
-
-	public JLabel getLblNewLabel_1() {
-		return lblNewLabel_1;
-	}
-
-	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
-		this.lblNewLabel_1 = lblNewLabel_1;
-	}
-
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
+	/**
+	 * Getters and Setters
+	 */
 
 	public JFrame getFrame() {
 		return frmMyDiary;
+	}
+
+	public JLabel getLblPhoto() {
+		return lblPhoto;
+	}
+
+	public void setLblPhoto(JLabel lblPhoto) {
+		this.lblPhoto = lblPhoto;
+	}
+
+	public JPanel getPnPhoto() {
+		return pnPhoto;
+	}
+
+	public void setPnPhoto(JPanel pnPhoto) {
+		this.pnPhoto = pnPhoto;
 	}
 
 	public void setFrame(JFrame frame) {

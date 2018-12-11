@@ -1,6 +1,5 @@
 package Gui;
 
-import Code.FindDiaries;
 import Code.SignupLogin;
 import Code.User;
 
@@ -11,11 +10,10 @@ import java.awt.event.MouseEvent;
 
 public class SignUpGui {
 
+	/**
+	 * Instance Variables
+	 */
 	private JFrame SignUp;
-	public JFrame getSignUp() {
-		return SignUp;
-	}
-
 	private JPasswordField tfPassword;
 	private JTextField tfUsername;
 	private JPasswordField tfConfirm;
@@ -41,6 +39,8 @@ public class SignUpGui {
 		SignUp.getContentPane().setLayout(null);
 		
 		JButton btnSignUp = new JButton("Sign up");
+		
+		//add a listener to the sign up button
 		btnSignUp.addMouseListener(new MouseAdapter() {
 			boolean signedUp = false;
 			@Override
@@ -57,6 +57,7 @@ public class SignUpGui {
 							tfPassword.setText(null);
 							tfConfirm.setText(null);
 							
+							//check if two password entered are the same
 							if(!confirmPwd.equals(pwd) ){
 							
 							JOptionPane.showMessageDialog(null,  " Passwords does not match, please try again.","Notice",JOptionPane.WARNING_MESSAGE);
@@ -70,8 +71,6 @@ public class SignUpGui {
 						else if (confirmPwd.equals(pwd)) {
 							User currentUser = SignupLogin.SignUp(username, confirmPwd); //This should create a new user
 							SignupLogin.createUserFile(username, confirmPwd);
-							FindDiaries diaries = new FindDiaries();
-							diaries.find(currentUser);
 
 									if (currentUser != null) signedUp = true;
 									JOptionPane.showMessageDialog(null, username + " , welcome to SilkPath !");
@@ -82,6 +81,7 @@ public class SignUpGui {
 												String username = tfUsername.getText();
 												String pwd = tfPassword.getText();
 										
+												//open the home page
 												MainGui window = new MainGui(new User(username,pwd));
 											    int w = window.getFrame().getSize().width;
 											    int h = window.getFrame().getSize().height;
@@ -146,4 +146,10 @@ public class SignUpGui {
 		tfConfirm.setBounds(246, 232, 87, 23);
 		SignUp.getContentPane().add(tfConfirm);
 	}
+	
+	//get frame 
+	public JFrame getSignUp() {
+		return SignUp;
+	}
+
 }

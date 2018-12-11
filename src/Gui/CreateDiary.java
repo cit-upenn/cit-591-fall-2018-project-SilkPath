@@ -1,18 +1,11 @@
 
 package Gui;
 
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
-import javax.imageio.ImageIO;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Code.User;
 import Gui.MainGui;
@@ -24,7 +17,6 @@ import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,9 +26,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -50,15 +39,10 @@ import javax.swing.JPanel;
 
 public class CreateDiary {
 
+	/**
+	 * Instance Variables
+	 */
 	private JFrame CreateMatch;
-	public JFrame getCreateMatch() {
-		return CreateMatch;
-	}
-
-	public void setCreateMatch(JFrame createMatch) {
-		CreateMatch = createMatch;
-	}
-
 	private JTextField txtMatchName;
 	private JTextField txtAddress;
 	private JTextField txtDate;
@@ -74,21 +58,6 @@ public class CreateDiary {
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					CreateDiary window = new CreateDiary(currentUser);
-//					window.CreateMatch.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -141,7 +110,6 @@ public class CreateDiary {
 		JTextArea tfBlurb = new JTextArea();
 		tfBlurb.setBounds(154, 110, 240, 86);
 		tfBlurb.setFont(new Font("AR JULIAN", Font.PLAIN, 15));
-		
 		CreateMatch.getContentPane().add(tfBlurb);
 		
 		JLabel lblNewLabel = new JLabel("*Place:");
@@ -187,6 +155,7 @@ public class CreateDiary {
 		btnPhoto.setFont(new Font("AR JULIAN", Font.PLAIN, 12));
 		btnPhoto.setBackground(new Color(255, 218, 185));
 		
+		//add a photo from local file
 		btnPhoto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -199,15 +168,15 @@ public class CreateDiary {
 				chooser.showOpenDialog(null); 
 				
 				File file = chooser.getSelectedFile();
-				String dest_path = System.getProperty("user.dir")+"/"+file.getName();
+				String dest_path = System.getProperty("user.dir")+"/"+file.getName(); 
 				File new_file = new File(dest_path);
 
 				
 				try {
-					Files.copy(file.toPath(), new_file.toPath());
+					Files.copy(file.toPath(), new_file.toPath()); //copy the photo path to source file
 
 				
-					CreateMatch.getContentPane().add(lblPhoto);
+					CreateMatch.getContentPane().add(lblPhoto); // add the photo in the frame
 					
 					JPanel pnPhoto = new JPanel();
 					pnPhoto.setBounds(419, 33, 146, 165);
@@ -217,14 +186,12 @@ public class CreateDiary {
 					pnPhoto.add( label, BorderLayout.CENTER );
 					pnPhoto.invalidate();
 					pnPhoto.validate();
-					pnPhoto.repaint();
-					
-					
+					pnPhoto.repaint();										
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-					
+				
+				//save the information from textField
 				btnSave.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String newName = txtMatchName.getText();
@@ -235,6 +202,7 @@ public class CreateDiary {
 						String blurb = tfBlurb.getText();
 						photo = new_file.getAbsolutePath();
 						
+						//check if textFiled is empty
 						if(newName.isEmpty()) {
 							JOptionPane.showMessageDialog(CreateMatch, "Please enter match name.");
 						}
@@ -247,6 +215,7 @@ public class CreateDiary {
 							JOptionPane.showMessageDialog(CreateMatch, "Please enter the place.");
 						}
 						
+						//save default information if empty
 						if(age.isEmpty()) {
 							age ="Unknown";
 						}
@@ -259,12 +228,15 @@ public class CreateDiary {
 						}
 						
 
+						//write the data into a file
 						if(!newName.isEmpty()|| !date.isEmpty() || !place.isEmpty()) {
 						String fileName = currentUser.getUsername() + ".txt";
 						try {
 							FileWriter fw = new FileWriter(fileName, true);
 						    BufferedWriter bw = new BufferedWriter(fw);
 						    PrintWriter out = new PrintWriter(bw);
+						    
+						    //seperate with delimeter "==="
 						    out.println(newName + "===" +age + "==="+ photo +"===" +blurb + "===" + date + "==="+ place + "==="+ Notes );
 							out.close();
 							
@@ -272,15 +244,15 @@ public class CreateDiary {
 							JOptionPane.showMessageDialog(CreateMatch, "Diary saved!");
 							
 							CreateMatch.dispose();
-
+							
+							//show up the home page after creating a diary
 							MainGui window = new MainGui(currentUser);
 							int w = window.getFrame().getSize().width;
 						    int h = window.getFrame().getSize().height;
 						    int x = (dim.width-w)/2;
 						    int y = (dim.height-h)/2;
 							window.getFrame().setVisible(true);
-							window.getFrame().setLocation(x, y);
-//													
+							window.getFrame().setLocation(x, y);												
 						} catch (IOException e) {
 							System.out.println("Diary cannot be created, please try again");
 							
@@ -316,6 +288,10 @@ public class CreateDiary {
 		
 
 	}
+	
+	/**
+	 * Getters and setters
+	 */
 	public JTextField getTxtMatchName() {
 		return txtMatchName;
 	}
@@ -359,4 +335,11 @@ public class CreateDiary {
 	public JButton getBtnSave() {
 		return btnSave;
 	}
+	
+	public JFrame getCreateMatch() {
+		return CreateMatch;
+	}
+	
+	
+
 }
