@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
+
 import Gui.LogInGui;
 import Gui.MainGui;
 import Gui.SignUpGui;
@@ -44,6 +46,9 @@ public class SilkPath {
 								String username = window.getTfUsername().getText();					
 								String pwd = window.getPassword().getText();
 								currentUser = SignupLogin.Login(username, pwd);	
+								if(currentUser == null) {
+									JOptionPane.showMessageDialog(null, "no user found!");
+								}
 								FindDiaries.find(currentUser);
 								window.getSilkPath().setVisible(false);		
 								EventQueue.invokeLater(new Runnable() {
